@@ -20,18 +20,7 @@ namespace Movies.Backend.Models
 
         public DateTime? ReleaseDate { get; set; }
 
-        // Serialized field for image paths
-        public string? ImagePathsSerialized { get; set; }
-
-        //The list of Image Urls. The serialization scenario keeps model and
-        //database schema simple as long as we dont want to query individual image paths
-        //If we wanted to query individual image paths, a foreign key
-        //to a MovieImage table approach would be better
-        [NotMapped]
-        public List<string>? ImageUrl {
-            get => string.IsNullOrEmpty(ImagePathsSerialized) ? new List<string>() : JsonSerializer.Deserialize<List<string>>(ImagePathsSerialized);
-            set => ImagePathsSerialized = JsonSerializer.Serialize(value);
-        }
+        public List<string>? ImagePaths { get; set; }
 
         public Genre? Genre { get; set; }
     }
