@@ -56,7 +56,6 @@ namespace Movies.Backend.Controllers
 
 
         [HttpPost]
-        [Authorize]
         public async Task<object> Post([FromBody] MovieDto movieDto)
         {
             try
@@ -75,7 +74,6 @@ namespace Movies.Backend.Controllers
 
 
         [HttpPut]
-        [Authorize]
         public async Task<object> Put([FromBody] MovieDto productDto)
         {
             try
@@ -92,7 +90,6 @@ namespace Movies.Backend.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Admin")]
         [Route("{id}")]
         public async Task<object> Delete(int id)
         {
