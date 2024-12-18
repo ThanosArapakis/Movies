@@ -2,7 +2,7 @@
 
 namespace Movies.Frontend.Services.IService
 {
-    public interface IMovieService
+    public interface IMovieService : IBaseService
     {
         Task<T> GetAllMoviesAsync<T>();
         Task<T> GetMovieByIdAsync<T>(int id);

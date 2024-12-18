@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Movies.Backend.Models;
 using Movies.Backend.Models.DataTransferObjects;
 using Movies.Backend.Repository.IRepository;
 
@@ -15,7 +12,7 @@ namespace Movies.Backend.Controllers
         protected ResponseDto _response;
         private IMovieRepository _movieRepository;
 
-        public MovieAPIController(IMovieRepository movieRepository, IMapper mapper)
+        public MovieAPIController(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
             this._response = new ResponseDto();
