@@ -1,15 +1,14 @@
-﻿using Movies.Backend.Models;
+﻿using Movies.Backend.Models.DataTransferObjects;
 using System.Linq.Expressions;
 
 namespace Movies.Backend.Repository.IRepository
 {
     public interface IMovieRepository
     {
-        IEnumerable<Movie> GetAllMovies(Expression<Func<Movie, bool>>? filter = null);
-        Movie? GetMovie(int? id);
-        void AddMovie(Movie entity);
-        void RemoveMovie(Movie entity);
-
-        void Save();
+        Task<IEnumerable<MovieDto>> GetAllMovies();
+        Task<MovieDto> GetMovie(int? id);
+        Task<MovieDto> AddMovie(MovieDto movie);
+        Task<MovieDto> UpdateMovie(MovieDto movie);
+        Task<bool> RemoveMovie(int movieId);
     }
 }
