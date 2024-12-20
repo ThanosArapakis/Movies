@@ -2,7 +2,7 @@
 @using Movies.Frontend.Models.Enums
 
 @model MovieDto
-<div class="card shadow border-0 mt-4">
+<div class="card shadow border-0 mt-4" style="background-image: url("https//localhost:7000@Model.ImagePaths[0]");">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
@@ -35,9 +35,6 @@
 
                 <div class="row pt-2">
                     <div class="col-6 col-md-3">
-                        <button type="submit" class="btn btn-primary form-control">Save</button>
-                    </div>
-                    <div class="col-6 col-md-3">
                         <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary border  form-control">
                             Return to Home Page
                         </a>
@@ -45,5 +42,21 @@
                 </div>
             </div>
         </form>
+        @if (Model.ImagePaths.Count > 0)
+        {
+            <div class="container row">
+
+                @foreach (var image in Model.ImagePaths)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="p-0 my-3 border rounded">
+                            <div class="card">
+                                <img src="@image" class="card-img-top">
+                            </div>
+                        </div>
+                    </div>
+                }      
+            </div>
+        }
     </div>
 </div>

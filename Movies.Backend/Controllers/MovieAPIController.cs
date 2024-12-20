@@ -5,20 +5,21 @@ using Movies.Backend.Repository.IRepository;
 
 namespace Movies.Backend.Controllers
 {
-    [Route("api/movie")]
+    [Route("api/movie")] //Controller Endpoint
     [ApiController]
     public class MovieAPIController : ControllerBase
     {
         protected ResponseDto _response;
         private IMovieRepository _movieRepository;
 
+        //Dependency Injection
         public MovieAPIController(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
             this._response = new ResponseDto();
         }
 
-        [HttpGet]
+        [HttpGet] //defines the type of the api call. In that case its an HTTP GET call.
         public async Task<object> GetAll()
         {
             try
@@ -35,7 +36,7 @@ namespace Movies.Backend.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id}")] //specific movie
         public async Task<object> Get(int? id)
         {
             try

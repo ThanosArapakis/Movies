@@ -11,6 +11,7 @@ namespace Movies.Backend.Models
         //Automatically Stored as Primary Key by Entity Framework
         public int Id { get; set; }
 
+        //Validations for the creation and update of the object
         [Required]
         [StringLength(100)]
         public string? Title { get; set; }

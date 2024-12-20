@@ -22,14 +22,18 @@ namespace Movies.Frontend.Services
         {
             try
             {
+                //Http client creation
                 var client = httpClient.CreateClient("MoviesAPI");
+
                 HttpRequestMessage message = new HttpRequestMessage();
-                message.Headers.Add("Accept", "application/json");
-                message.RequestUri = new Uri(RequestDto.Url);
+                message.Headers.Add("Accept", "application/json"); 
+                message.RequestUri = new Uri(RequestDto.Url); //the endpoint of the call
+
+
                 client.DefaultRequestHeaders.Clear();
                 if (RequestDto.Data != null)
                 {
-                    message.Content = new StringContent(JsonConvert.SerializeObject(RequestDto.Data),
+                    message.Content = new StringContent(JsonConvert.SerializeObject(RequestDto.Data),   //serializing the data of the Request Body
                         Encoding.UTF8, "application/json");
                 }               
 
@@ -49,10 +53,13 @@ namespace Movies.Frontend.Services
                         message.Method = HttpMethod.Get;
                         break;
                 }
+
+                //API CALL
                 apiResponse = await client.SendAsync(message);
 
-                var apiContent = await apiResponse.Content.ReadAsStringAsync();
-                var apiResponseDto = JsonConvert.DeserializeObject<T>(apiContent);
+
+                var apiContent = await apiResponse.Content.ReadAsStringAsync(); 
+                var apiResponseDto = JsonConvert.DeserializeObject<T>(apiContent); //Reading and deseriazing the Response body of the call to return a ResponseDto back
                 return apiResponseDto;
 
             }

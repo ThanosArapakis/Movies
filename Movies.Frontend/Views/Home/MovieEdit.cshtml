@@ -42,8 +42,9 @@
                 <br />
 
                 <div class="form-floating py-2 col-12">
-                    <input type="file" id="ImagePaths" name="ImagePaths" multiple />
-                    <span asp-validation-for="ImagePaths" class="text-danger"></span>
+                    <label asp-for="UploadedImages" class="ms-2">Images</label>
+                    <input asp-for="UploadedImages" type="file" multiple class="form-control" />
+                    <span asp-validation-for="UploadedImages" class="text-danger"></span>
                 </div>
                 <div class="row pt-2">
                     <div class="col-6 col-md-3">

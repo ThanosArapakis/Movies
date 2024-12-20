@@ -15,5 +15,9 @@ namespace Movies.Frontend.Models.DataTransferObjects
         public List<string>? ImagePaths { get; set; }
 
         public Genre? Genre { get; set; }
+
+        //Images that the user added in the create and edit form
+        public List<IFormFile>? UploadedImages { get; set; }
+
     }
 }

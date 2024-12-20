@@ -23,11 +23,12 @@ namespace Movies.Backend.Repository
 
         public async Task<MovieDto> AddMovie(MovieDto movieDto)
         {
+            //Mapping my MovieDto object to a Movie
             Movie movie = _mapper.Map<MovieDto, Movie>(movieDto);
             _db.Movies.Add(movie);
-            await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync(); //Adding the movie to the database and save the changes
 
-            return _mapper.Map<Movie, MovieDto>(movie);
+            return _mapper.Map<Movie, MovieDto>(movie); //return a MovieDto object so it can be within the Response Body later
         }
 
 
@@ -35,7 +36,7 @@ namespace Movies.Backend.Repository
         {
             Movie movie = _mapper.Map<MovieDto, Movie>(movieDto);
             _db.Movies.Update(movie);
-            await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync(); //Updating the movie to the database and save the changes
 
             return _mapper.Map<Movie, MovieDto>(movie);
         }

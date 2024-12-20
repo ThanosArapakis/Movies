@@ -16,13 +16,15 @@ namespace Movies.Data
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }       
       
-
+        //By declaring Movie as a dbSet i command Entity Framework to create a table in my database with that name
+        //and every time i change something in that class and type add-migration *name* the changes are shown
         public DbSet<Movie> Movies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            //matching the Enum field Genre to a string value so it can be saved to a varchar database column
             modelBuilder
                         .Entity<Movie>()
                         .Property(p => p.Genre)
